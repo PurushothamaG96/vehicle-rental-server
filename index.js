@@ -2,6 +2,8 @@
 const express = require("express")
 const app = express()
 const dotenv = require("dotenv")
+const bookingRouter = require("./src/Routers/bookingRouter")
+const cors = require("cors")
 
 //system environment configuration
 dotenv.config()
@@ -10,6 +12,14 @@ dotenv.config()
 const main = require("./src/connections/mongoose-connect")
 main()
 
+//midleware usage
+app.use("/app/v1", bookingRouter)
+
+// Set the allowed origins
+const corsOptions = {
+    origin: 'http://localhost127.0.0.1:5500'
+  };
+app.use(cors())
 
 //server listening
 const port = process.env.PORT || 5500;
