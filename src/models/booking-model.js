@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const {Schema, model, ObjectId} = mongoose;
 
 const BookingSchema = new Schema({
+  name:{type:String, required:true},
   type: { type: String, required: true },
   model: { type: String, required: true },
   startDate: { type: Date, required: true },
